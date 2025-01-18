@@ -1,20 +1,31 @@
-#include "../inc/philosophers.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kenito <kenito@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 22:33:28 by kenito            #+#    #+#             */
+/*   Updated: 2023/12/19 22:33:28 by kenito           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../inc/philo.h"
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-    while (*s1 && *s2)
-    {
-        if (*s1 != *s2)
-            return (1);
-        s1++;
-        s2++;
-    }
-    if (*s1 != *s2)
-        return (1);
-    return (0);
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (1);
+		s1++;
+		s2++;
+	}
+	if (*s1 != *s2)
+		return (1);
+	return (0);
 }
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int				sign;
 	unsigned long	result;
@@ -61,12 +72,13 @@ void	ft_usleep(size_t ms)
 		usleep(ms / 10);
 }
 
-int print_message(t_philo *philo, char *message)
+int	print_message(t_philo *philo, char *message)
 {
-    if (is_dead(philo) && ft_strcmp(message, "died"))
-        return (1);
-    pthread_mutex_lock(&philo->data->write);
-    printf("%llu %d %s\n", get_time() - philo->data->time_start, philo->id, message);
-    pthread_mutex_unlock(&philo->data->write);
-    return (0);
+	if (is_dead(philo) && ft_strcmp(message, "died"))
+		return (1);
+	pthread_mutex_lock(&philo->data->write);
+	printf("%lu %d %s\n", get_time() - philo->data->time_start, philo->id,
+		message);
+	pthread_mutex_unlock(&philo->data->write);
+	return (0);
 }
