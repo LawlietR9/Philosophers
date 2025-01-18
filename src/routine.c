@@ -39,10 +39,10 @@ void    *check_death(void *pointer)
 	{
 		if (get_time() >= philo->time_to_die && philo->eating == 0)
         {
-            print_message(philo, "died");
             pthread_mutex_lock(&philo->data->end);
             philo->data->dead = 1;
 	    	pthread_mutex_unlock(&philo->data->end);
+            print_message(philo, "died");
         }
 	}
 	return ((void *)0);

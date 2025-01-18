@@ -1,15 +1,17 @@
 #include "../inc/philosophers.h"
 
-int ft_strlen(char *str)
+int ft_strcmp(char *s1, char *s2)
 {
-    int	i;
-
-    if (str == NULL)
-        return (0);
-    i = 0;
-    while (str[i] != '\0')
-        i++;
-    return (i);
+    while (*s1 && *s2)
+    {
+        if (*s1 != *s2)
+            return (1);
+        s1++;
+        s2++;
+    }
+    if (*s1 != *s2)
+        return (1);
+    return (0);
 }
 
 int ft_atoi(char *str)
@@ -61,7 +63,7 @@ void	ft_usleep(size_t ms)
 
 int print_message(t_philo *philo, char *message)
 {
-    if (is_dead(philo))
+    if (is_dead(philo) && ft_strcmp(message, "died"))
         return (1);
     pthread_mutex_lock(&philo->data->write);
     printf("%llu %d %s\n", get_time() - philo->data->time_start, philo->id, message);

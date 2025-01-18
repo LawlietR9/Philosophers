@@ -56,7 +56,7 @@ int init_philo(t_data *data);
 int init_data(int argc, char **argv, t_data *data);
 
 // utils.c
-int ft_strlen(char *str);
+int ft_strcmp(char *s1, char *s2);
 int ft_atoi(char *str);
 int print_message(t_philo *philo, char *message);
 size_t get_time(void);

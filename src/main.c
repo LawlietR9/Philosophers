@@ -25,7 +25,7 @@ int ft_exit(t_data *data)
 
 int ft_error(char *str, t_data *data)
 {
-    write(2, str, ft_strlen(str));
+    printf("%s\n", str);
     if (data)
         ft_exit(data);
     return (1);
